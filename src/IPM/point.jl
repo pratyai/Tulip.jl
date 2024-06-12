@@ -43,6 +43,6 @@ mutable struct Point{T, Tv}
 end
 
 function update_mu!(pt::Point)
-    pt.μ = (dot(pt.xl, pt.zl) + dot(pt.xu, pt.zu) + pt.hflag * (pt.τ * pt.κ)) / (pt.p + pt.hflag)
+    pt.μ = max(1e-16, (dot(pt.xl, pt.zl) + dot(pt.xu, pt.zu) + pt.hflag * (pt.τ * pt.κ)) / (pt.p + pt.hflag))
     return nothing
 end
